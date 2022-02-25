@@ -84,7 +84,7 @@ class Khalti extends Gateway {
     }
 
     getSecretKey() {
-        const  secretKey =  process.env.KHALTI_LIVE_MODE == true
+        const  secretKey =  this.isLiveMode()
             ? process.env.LIVE_KHALTI_SECRET_KEY
             : process.env.TEST_KHALTI_SECRET_KEY;
         return secretKey;

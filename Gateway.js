@@ -12,10 +12,6 @@ class Gateway {
         throw new Error('TODO IMPLEMENT VERIFY PAYMENT METHOD');
     }
 
-    customPaymentException(message) {
-        return { type: 'CustomPaymentException', message };
-    }
-
     verifyPaymentResponse(gatewayUniqueId, gatewayResponseStatus, gatewayResponseBody, isVerified, isPaymentSuccess, alreadyVerified = false) {
         return {
             gatewayUniqueId,

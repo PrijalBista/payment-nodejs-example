@@ -53,7 +53,8 @@ class Esewa extends Gateway {
     }
 
     async verifyTransactionFromEsewaApi(oId, refId, amount) {
-        const url = "https://uat.esewa.com.np/epay/transrec";
+        // const url = "https://uat.esewa.com.np/epay/transrec";
+        const url = this.getEsewaUrl();
 
         // const data= {
         //     amt: amount,
@@ -88,9 +89,15 @@ class Esewa extends Gateway {
     }
 
     getServiceCode() {
-        return process.env.ESEWA_LIVE_MODE == true
+        return this.isLiveMode()
             ? process.env.LIVE_ESEWA_SCD
             : process.env.TEST_ESEWA_SCD;
+    }
+
+    getEsewaUrl() {
+        return this.isLiveMode()
+        ? process.env.LIVE_ESEWA_URL
+        : process.env.TEST_ESEWA_URL;
     }
 
     isLiveMode() {

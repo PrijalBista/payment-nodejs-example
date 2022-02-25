@@ -146,7 +146,7 @@ class ConnectIPS extends Gateway {
         return { txnId };
     }
     getConfig() {
-        return process.env.CONNECT_IPS_LIVE_MODE == true
+        return this.isLiveMode()
             ? {
                 merchantId: process.env.LIVE_CONNECT_IPS_MERCHANT_ID,
                 appId: process.env.LIVE_CONNECT_IPS_APP_ID,
